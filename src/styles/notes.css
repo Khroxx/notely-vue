@@ -4,6 +4,9 @@ section {
   .note-container{
     min-width: 170px;
     flex: 1;
+    max-height: calc(180px - 16px);
+    height: 180px;
+    overflow: hidden;
   }
   #searchNotes::placeholder {
     font-size: 12px;
@@ -65,7 +68,7 @@ section {
     transform: translate(-50%, -50%);
   }
   
-  .add-note-container {
-    width: calc(100% - 3rem);
-    height: calc(100% - 3rem);
+  .custom-container-size {
+    width: calc(100dvw - 3rem);
+    height: calc(100dvh - 3rem);
   }
