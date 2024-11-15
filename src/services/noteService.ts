@@ -1,21 +1,31 @@
-import apiClient from './api';
+import axios from 'axios';
+
+const apiClient = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',   
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export default {
-  getNotes() {
-    return apiClient.get('/notes/');
+/* eslint-disable  */
+  async getNotes() {
+    return apiClient.get('/notes/')
   },
-  getNote(id: number) {
-    return apiClient.get(`/notes/${id}/`);
+  async getNote(id: number) {
+    return apiClient.get(`/notes/${id}`)
   },
-  // eslint-disable-next-line
-  createNote(note: any) {
-    return apiClient.post('/notes/', note);
+  async createNote(note: { title: string; content: string }) {
+    try {
+      apiClient.post('/notes/', note)
+    } catch (error) {
+      console.log(error)
+    }
   },
-  // eslint-disable-next-line
-  updateNote(id: number, note: any) {
+  async updateNote(id: number, note: {title: string, content: string}) {
     return apiClient.put(`/notes/${id}/`, note);
   },
-  deleteNote(id: number) {
-    return apiClient.delete(`/notes/${id}/`);
+  async deleteNote(id: number) {
+    apiClient.delete(`/notes/${id}/`);
   },
 };                      
