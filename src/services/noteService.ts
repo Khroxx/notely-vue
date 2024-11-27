@@ -13,7 +13,7 @@ export default {
     return apiClient.get('/notes/')
   },
   async getNoteById(id: number) {
-    return apiClient.get(`/notes/${id}`)
+    return apiClient.get(`/notes/${id}/`)
   },
   async createNote(note: { title: string; content: string }) {
     try {
