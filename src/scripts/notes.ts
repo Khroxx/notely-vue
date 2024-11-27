@@ -36,7 +36,7 @@ export default class HomeView extends Vue {
     openThisNote(note_id: number) {
         this.openNote = !this.openNote
         this.currentNoteId = note_id;
-        noteService.getNote(this.currentNoteId).then(response => {
+        noteService.getNoteById(this.currentNoteId).then(response => {
             this.currentNote = response.data;
         });
     }
@@ -68,6 +68,6 @@ export default class HomeView extends Vue {
 
     deleteThisNote(id: number) {
         // send delete request with id
-        noteService.deleteNote(id)
+        noteService.deleteNoteById(id)
     }
 }
